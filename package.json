@@ -1,0 +1,23 @@
+{
+  "name": "Failed",
+  "version": "1.0.0",
+  "description": "*The App that was a faillure!!!*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilvenLEAF/Failed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SilvenLEAF/Failed/issues"
+  },
+  "homepage": "https://github.com/SilvenLEAF/Failed#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
