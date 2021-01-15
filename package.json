@@ -1,0 +1,30 @@
+{
+  "name": "learning_graphql",
+  "version": "1.0.0",
+  "description": "Learning GraphQL",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilvenLEAF/GraphQL.git"
+  },
+  "keywords": [
+    "SilvenLEAF",
+    "GraphQL"
+  ],
+  "author": "SilvenLEAF",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SilvenLEAF/GraphQL/issues"
+  },
+  "homepage": "https://github.com/SilvenLEAF/GraphQL#readme"
+}
