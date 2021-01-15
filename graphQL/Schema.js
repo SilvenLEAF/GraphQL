@@ -6,7 +6,8 @@ const {
   GraphQLSchema,
   GraphQLID,
   GraphQLString,
-  GraphQLSkipDirective
+  GraphQLSkipDirective,
+  GraphQLList
 } = require('graphql');
 
 
@@ -73,7 +74,30 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args){
         return Characters.find(item => item.id == args.id);
       }
-    }
+    },
+
+
+
+    animes: {
+      type: new GraphQLList(AnimeType),
+      
+      resolve(parent, args){
+        return Animes;
+      }
+    },
+
+
+
+
+
+
+    characters: {
+      type: new GraphQLList(CharacterType),
+      
+      resolve(parent, args){
+        return Characters;
+      }
+    },
   }
 });
 
