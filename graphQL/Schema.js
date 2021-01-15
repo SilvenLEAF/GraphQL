@@ -5,9 +5,9 @@ const {
   GraphQLObjectType,
   GraphQLSchema,
   GraphQLID,
-  GraphQLString,
-  GraphQLSkipDirective,
-  GraphQLList
+  GraphQLString,  
+  GraphQLList,
+  GraphQLNonNull
 } = require('graphql');
 
 
@@ -131,7 +131,63 @@ const RootQuery = new GraphQLObjectType({
 ----------------------------------------- */
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
-  fields: {}
+  fields: {
+    addAnime: {
+      type: AnimeType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        synopsis: { type: new GraphQLNonNull(GraphQLString) },     
+      },
+
+
+      resolve(parent, args){
+        Animes.push({...args});
+        return Animes.find(item => item.id == args.id);
+      }
+    },
+
+
+
+
+
+
+    deleteAnime: {
+      type: AnimeType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },        
+      },
+
+
+      resolve(parent, args){        
+        return Animes.pop();
+      }
+    },
+
+
+
+
+
+
+
+    updateAnime: {
+      type: AnimeType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        synopsis: { type: new GraphQLNonNull(GraphQLString) },     
+      },
+
+
+      resolve(parent, args){
+        Animes.pop();
+        Animes.push({...args});
+        return Animes.find(item => item.id == args.id);
+      }
+    }
+  }
 });
 
 
@@ -148,5 +204,5 @@ const Mutation = new GraphQLObjectType({
 ----------------------------------------- */
 module.exports = new GraphQLSchema({
   query: RootQuery,
-  
+  mutation: Mutation
 });
