@@ -24,7 +24,17 @@ const AnimeType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     genre: { type: GraphQLString },
-    synopsis: { type: GraphQLString }
+    synopsis: { type: GraphQLString },
+
+
+
+
+    characters: {
+      type: new GraphQLList(CharacterType),
+      resolve(parent, args){
+        return Characters.filter(item => parent.id == item.animeId);
+      }
+    }
   })
 });
 
@@ -42,6 +52,14 @@ const CharacterType = new GraphQLObjectType({
     name: { type: GraphQLString },
     line: { type: GraphQLString },
     animeId: { type: GraphQLID },
+
+
+    anime: {
+      type: AnimeType,
+      resolve(parent, args){
+        return Animes.find(item => parent.animeId == item.id);
+      }
+    }
   })
 });
 
