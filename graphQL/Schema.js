@@ -10,9 +10,9 @@ const {
 
 
 
-// BookType 
-const BookType = new GraphQLObjectType({
-  name: 'Book',
+// AnimeType 
+const AnimeType = new GraphQLObjectType({
+  name: 'Anime',
   fields: ()=>({
     
   })
@@ -24,9 +24,9 @@ const BookType = new GraphQLObjectType({
 
 
 
-// AuthorType
-const AuthorType = new GraphQLObjectType({
-  name: 'Author',
+// CharacterType
+const CharacterType = new GraphQLObjectType({
+  name: 'Character',
   fields: ()=>({
 
   })
