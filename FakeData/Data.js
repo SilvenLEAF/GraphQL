@@ -1,4 +1,4 @@
-const Animes = [
+module.exports.Animes = [
   {
     id: 0,
     name: `Mairimashita Iruma-kun`,
@@ -28,7 +28,7 @@ const Animes = [
 
 
 
-const Characters = [
+module.exports.Characters = [
   {
     id: 0,
     name: 'Saitama',

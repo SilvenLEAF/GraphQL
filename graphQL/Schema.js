@@ -1,8 +1,14 @@
-const graphql = require('graphql');
+// fake data
+const { Animes, Characters } = require('../FakeData/Data');
+
 const {
   GraphQLObjectType,
-  GraphQLSchema
-} = graphql;
+  GraphQLSchema,
+  GraphQLID,
+  GraphQLString,
+  GraphQLSkipDirective
+} = require('graphql');
+
 
 
 
@@ -14,7 +20,10 @@ const {
 const AnimeType = new GraphQLObjectType({
   name: 'Anime',
   fields: ()=>({
-    
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    genre: { type: GraphQLString },
+    synopsis: { type: GraphQLString }
   })
 });
 
@@ -28,7 +37,10 @@ const AnimeType = new GraphQLObjectType({
 const CharacterType = new GraphQLObjectType({
   name: 'Character',
   fields: ()=>({
-
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    line: { type: GraphQLString },
+    animeId: { type: GraphQLID },
   })
 });
 
@@ -43,7 +55,26 @@ const CharacterType = new GraphQLObjectType({
 ----------------------------------------- */
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
-  fields: {}
+  fields: {
+    anime: {
+      type: AnimeType,
+      args: { id: { type: GraphQLID } },
+
+      resolve(parent, args){
+        return Animes.find(item => item.id == args.id);
+      }
+    },
+
+
+    character: {
+      type: CharacterType,
+      args: { id: { type: GraphQLID} },
+
+      resolve(parent, args){
+        return Characters.find(item => item.id == args.id);
+      }
+    }
+  }
 });
 
 
@@ -75,5 +106,5 @@ const Mutation = new GraphQLObjectType({
 ----------------------------------------- */
 module.exports = new GraphQLSchema({
   query: RootQuery,
-  mutation: Mutation
+  
 });
