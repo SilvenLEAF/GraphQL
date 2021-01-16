@@ -17,6 +17,12 @@ module.exports.Animes = [
     genre: `SuperPowers OP Action`,
     synopsis: `Saitama, an insanely overpowered Hero seeks to find an worthy opponent after growing bored by a lack of challenge due to his overwhelming strength.`,
   },
+  {
+    id: 3,
+    name: `Naruto`,
+    genre: `Ninja`,
+    synopsis: `Naruto's adventure to rescue Sinsuke and become the Hokage of Konoha hidden village.`,
+  },
 
 ]
 
@@ -64,5 +70,41 @@ module.exports.Characters = [
     name: 'Asmodeus',
     line: 'Sasuga Iruma-sama!',
     animeId: 2,
+  },
+  {
+    id: 6,
+    name: 'Uzumaki Naruto',
+    line: 'Uzumaki Naruto Sanzou!',
+    animeId: 3,
+  },
+  {
+    id: 7,
+    name: 'Clara',
+    line: 'Iruma-chi asobou!',
+    animeId: 0,
+  },
+  {
+    id: 8,
+    name: 'Onsoku-No-Sonic',
+    line: 'Ore kara nigeru to omou no ka?!',
+    animeId: 2,
+  },
+  {
+    id: 9,
+    name: 'Hinata',
+    line: 'Naruto-kun!',
+    animeId: 3,
+  },
+  {
+    id: 10,
+    name: 'Gara',
+    line: 'Ore wa sabaku no gara!',
+    animeId: 3,
+  },
+  {
+    id: 11,
+    name: 'Bokuto',
+    line: 'Shoyo ike ike tonde misero!',
+    animeId: 1,
   },
 ]

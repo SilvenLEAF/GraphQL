@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 
-const { graphqlHTTP } = require('express-graphql');
 
 
 
@@ -29,10 +28,6 @@ app.use(express.static(path.join(__dirname, 'client/bulid')));
 
 
 // ------------------------------GRAPH QL
-app.use('/graphQL', graphqlHTTP({
-  schema: require('./graphQL/Schema'),
-  graphiql: true
-}))
 
 
 
