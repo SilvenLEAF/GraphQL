@@ -117,8 +117,64 @@ const RootQuery = new GraphQLObjectType({
 .                   Mutation
 ---------------------------------------- */
 const Mutation = new GraphQLObjectType({
-  name: `Mutation`,
-  fields: {}
+  name: 'Mutation',
+  fields: {
+    addAnime: {
+      type: AnimeType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        synopsis: { type: new GraphQLNonNull(GraphQLString) },     
+      },
+
+
+      resolve(parent, args){
+        Animes.push({...args});
+        return Animes.find(item => item.id == args.id);
+      }
+    },
+
+
+
+
+
+
+    deleteAnime: {
+      type: AnimeType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },        
+      },
+
+
+      resolve(parent, args){        
+        return Animes.pop();
+      }
+    },
+
+
+
+
+
+
+
+    updateAnime: {
+      type: AnimeType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        synopsis: { type: new GraphQLNonNull(GraphQLString) },     
+      },
+
+
+      resolve(parent, args){
+        Animes.pop();
+        Animes.push({...args});
+        return Animes.find(item => item.id == args.id);
+      }
+    }
+  }
 });
 
 
