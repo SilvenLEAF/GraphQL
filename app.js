@@ -28,9 +28,9 @@ app.use(express.static(path.join(__dirname, 'client/bulid')));
 
 // ------------------------------GRAPH QL
 app.use('/graphql', graphqlHTTP({
-  schema: 31243,
+  schema: require('./graphQL/Schema'),
   graphiql: true
-}))
+}));
 
 
 
