@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLSchema } = require('graphql');
+const { GraphQLObjectType, GraphQLSchema, GraphQLID, GraphQLString } = require('graphql');
 
 
 
@@ -11,14 +11,24 @@ const { GraphQLObjectType, GraphQLSchema } = require('graphql');
 ---------------------------------------- */
 const AnimeType = new GraphQLObjectType({
   name: `AnimeType`,
-  fields: ()=>{}
+  fields: ()=>({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    genre: { type: GraphQLString },
+    synopsis: { type: GraphQLString }
+  })
 });
 
 
 
 const CharacterType = new GraphQLInputObjectType({
   name: `CharacterType`,
-  fields: ()=>{}
+  fields: ()=>({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    line: { type: GraphQLString },
+    animeId: { type: GraphQLID },
+  })
 });
 
 
