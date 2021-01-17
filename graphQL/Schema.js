@@ -1,4 +1,7 @@
-const { GraphQLObjectType, GraphQLSchema, GraphQLID, GraphQLString } = require('graphql');
+// FAKE DATA
+const { Animes, Characters } = require('../FakeData/Data');
+
+const { GraphQLObjectType, GraphQLSchema, GraphQLID, GraphQLString, GraphQLList } = require('graphql');
 
 
 
@@ -15,7 +18,15 @@ const AnimeType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     genre: { type: GraphQLString },
-    synopsis: { type: GraphQLString }
+    synopsis: { type: GraphQLString },
+
+
+    characters: {
+      type: new GraphQLList(CharacterType),
+      resolve(parent, args){
+        return Characters.filter(item=> item.animeId == parent.id);
+      }
+    }
   })
 });
 
@@ -28,6 +39,14 @@ const CharacterType = new GraphQLInputObjectType({
     name: { type: GraphQLString },
     line: { type: GraphQLString },
     animeId: { type: GraphQLID },
+
+
+    anime: {
+      type: AnimeType,
+      resolve(parent, args){
+        return Animes.find(item=> parent.animeId == item.id);
+      }
+    }
   })
 });
 
