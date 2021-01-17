@@ -64,7 +64,44 @@ const CharacterType = new GraphQLInputObjectType({
 ---------------------------------------- */
 const RootQuery = new GraphQLObjectType({
   name: `RootQueryType`,
-  fields: {}
+  fields: {
+    anime: {
+      type: AnimeType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args){
+        return Animes.find(item=> item.id == args.id);
+      }
+    },
+
+
+
+
+    character: {
+      type: CharacterType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args){
+        return Characters.find(item => item.id == args.id);
+      }
+    },
+
+
+
+    animes: {
+      type: new GraphQLList(AnimeType),
+      resolve(parent, args){
+        return Animes;
+      }
+    },
+
+
+
+    characters: {
+      type: new GraphQLList(CharacterType),
+      resolve(parent, args){
+        return Characters;
+      }
+    }
+  }
 });
 
 
